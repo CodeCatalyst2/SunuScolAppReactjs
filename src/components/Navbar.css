@@ -1,0 +1,30 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-logo {
+    font-weight: bold;
+}
+
+.navbar-content span {
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.navbar-content span:hover {
+    color: #0077b6;
+}
+
+.navbar-profile {
+    font-style: italic;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
