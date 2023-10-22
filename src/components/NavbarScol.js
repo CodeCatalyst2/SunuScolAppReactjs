@@ -17,11 +17,11 @@ function NavbarScol() {
                     <img src={imgUser} alt="User Icon" width="50" height="50" />
                 </div>
                 <div>
-                <h3 className={styles.collegeIcon}>
-                    <img src={iconCollege} alt="College Icon" width="" height="25" className='me-1 mb-2' />
-                    Collège Dakar
-                </h3>
-                <h4>Espace Professeur : M. Dev</h4>
+                    <h3 className={styles.collegeIcon}>
+                        <img src={iconCollege} alt="College Icon" width="" height="25" className='me-1 mb-2' />
+                        Collège Dakar
+                    </h3>
+                    <h4>Espace Professeur : M. Dev</h4>
                 </div>
             </div>
 
@@ -41,7 +41,10 @@ function NavbarScol() {
                         <Nav.Link onClick={() => navigate("/students")}>Elèves</Nav.Link>
                     </Nav>
                     <Nav className="me-2">
-                        <Nav.Link onClick={() => navigate("/roles")}>Roles</Nav.Link>
+                        <Nav.Link onClick={() => navigate("/roles")}>Rôles</Nav.Link>
+                    </Nav>
+                    <Nav className="me-2">
+                        <Nav.Link onClick={() => navigate("/adduser")}>Ajouter un utilisateur</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

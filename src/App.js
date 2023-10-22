@@ -6,9 +6,7 @@ import UsersList from './components/UsersList';
 import ClassStudent from './components/ClassStudent';
 import Student from './components/Student';
 import Role from './components/Role';
-// import 'bootstrap/dist/js/bootstrap';
-
-
+import AddUser from './components/AddUser';
 import './App.css';
 
 function App() {
@@ -21,6 +19,7 @@ function App() {
         <Route path="/classes" element={<ClassStudent />} />
         <Route path="/students" element={<Student />} />
         <Route path="/roles" element={<Role />} />
+        <Route path="/adduser" element={<AddUser />} />
       </Routes>
     </div>
   );

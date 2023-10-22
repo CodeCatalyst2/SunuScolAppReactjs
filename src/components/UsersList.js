@@ -1,6 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import AddUser from './AddUser';
 
 
 function UsersList() {
@@ -19,18 +23,20 @@ function UsersList() {
             });
     }, []);
 
-    const deleteuser = (userId, userName) => {
+    const deleteUser = (userId, userName) => {
         let conf = window.confirm(`Etes-vous sûr de vouloir supprimer ${ userName} ?`);
         if (conf) {
             const user_API_BASE_URL = "http://localhost:8080/user/";
             axios.delete(user_API_BASE_URL + userId);
-            // window.location.reload();
+            console.log("userId : " + userId)
+            window.location.reload();
         }
     };
 
     return (
         <>
             <div>
+                <AddUser/>
                 <h1 className='m-3 text-center'>Liste des utilisateurs</h1>
 
                 <div className='container'>
@@ -53,8 +59,12 @@ function UsersList() {
                                                 <td>{user.userName}</td>
                                                 <td>{user.email}</td>
                                                 <td>
-                                                    <button onClick={() => { navigate(`/user_roles/${user.id}`) }} className="btn btn-success">Modifier </button>
-                                                    <button style={{ marginLeft: "10px" }} onClick={() => { deleteuser(user.id, user.userName) }} className="btn btn-danger">Supprimer </button>
+                                                    <button onClick={() => { navigate(`/user_roles/${user.id}`) }} className="btn btn-success rounded-pill">
+                                                        <FontAwesomeIcon icon={faEdit} />
+                                                    </button>
+                                                    <button style={{ marginLeft: "10px" }} onClick={() => { deleteUser(user.userId, user.userName) }} className="btn btn-danger rounded-pill">
+                                                        <FontAwesomeIcon icon={faTrash} />
+                                                    </button>
                                                 </td>
                                             </tr>
                                     )

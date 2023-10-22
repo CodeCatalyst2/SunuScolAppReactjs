@@ -19,8 +19,8 @@ function ClassStudent() {
             });
     }, []);
 
-    const deleteclassStudents = (classStudentsId, classStudentsName) => {
-        let conf = window.confirm(`Etes-vous sûr de vouloir supprimer ${classStudentsName} ?`);
+    const deleteclassStudents = (classStudentsId, classLevel) => {
+        let conf = window.confirm(`Etes-vous sûr de vouloir supprimer ${classLevel} ?`);
         if (conf) {
             const classStudents_API_BASE_URL = "http://localhost:8080/class_student/";
             axios.delete(classStudents_API_BASE_URL + classStudentsId);
@@ -52,7 +52,7 @@ function ClassStudent() {
                                                 <td>{classStudents.classLevel}</td>
                                                 <td>
                                                     <button onClick={() => { navigate(`/classStudents_roles/${classStudents.id}`) }} className="btn btn-success">Modifier </button>
-                                                    <button style={{ marginLeft: "10px" }} onClick={() => { deleteclassStudents(classStudents.id, classStudents.classStudentsName) }} className="btn btn-danger">Supprimer </button>
+                                                    <button style={{ marginLeft: "10px" }} onClick={() => { deleteclassStudents(classStudents.classId, classStudents.classLevel) }} className="btn btn-danger">Supprimer </button>
                                                 </td>
                                             </tr>
                                     )

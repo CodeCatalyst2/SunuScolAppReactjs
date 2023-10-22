@@ -31,7 +31,7 @@ function Role() {
   return (
     <>
       <div>
-        <h1 className='m-3 text-center'>Liste des roles</h1>
+        <h1 className='m-3 text-center'>Liste des rôles</h1>
 
         <div className='container'>
           <div className="row">
@@ -54,7 +54,7 @@ function Role() {
                         <td>{role.permissions}</td>
                         <td>
                           <button onClick={() => { navigate(`/role_roles/${role.id}`) }} className="btn btn-success">Modifier </button>
-                          <button style={{ marginLeft: "10px" }} onClick={() => { deleterole(role.id, role.roleName) }} className="btn btn-danger">Supprimer </button>
+                          <button style={{ marginLeft: "10px" }} onClick={() => { deleterole(role.roleId, role.roleName) }} className="btn btn-danger">Supprimer </button>
                         </td>
                       </tr>
                   )

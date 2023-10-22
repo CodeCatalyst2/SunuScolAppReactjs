@@ -19,8 +19,8 @@ function Student() {
             });
     }, []);
 
-    const deleteStudent = (studentId, studentName) => {
-        let conf = window.confirm(`Etes-vous sûr de vouloir supprimer ${ studentName} ?`);
+    const deleteStudent = (studentId, lastName) => {
+        let conf = window.confirm(`Etes-vous sûr de vouloir supprimer ${lastName} ?`);
         if (conf) {
             const STUDENT_API_BASE_URL = "http://localhost:8080/student/";
             axios.delete(STUDENT_API_BASE_URL + studentId);
@@ -54,7 +54,7 @@ function Student() {
                                                 <td>{student.lastName}</td>
                                                 <td>
                                                     <button onClick={() => { navigate(`/student_roles/${student.id}`) }} className="btn btn-success">Modifier </button>
-                                                    <button style={{ marginLeft: "10px" }} onClick={() => { deleteStudent(student.id, student.studentName) }} className="btn btn-danger">Supprimer </button>
+                                                    <button style={{ marginLeft: "10px" }} onClick={() => { deleteStudent(student.studentId, student.lastName) }} className="btn btn-danger">Supprimer </button>
                                                 </td>
                                             </tr>
                                     )
