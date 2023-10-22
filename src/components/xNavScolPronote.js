@@ -11,13 +11,12 @@ function NavScol() {
 
 
     return (
-        <div >
-            
+        <div> 
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '5px' }}>
                     <div style={{ margin: '0 10px' }}>
                         <img src={imgUser} alt="User Icon" width="50" height="50" />
                     </div>
-                    <div style={{ margin: '0 10px' }}>
+                    <div>
                     <h3 style={{ margin: '0' }}>
                             <img src={iconCollege} alt="College Icon" width="" height="25" className='me-1 mb-2' />
                             Collège Dakar

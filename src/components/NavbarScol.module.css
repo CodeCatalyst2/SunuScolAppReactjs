@@ -1,0 +1,18 @@
+.centerContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.iconMargin {
+    margin: 0 10px;
+}
+
+.collegeIcon {
+    margin: 0;
+}
+
+.invertedIcon {
+    filter: invert(1);
+}
