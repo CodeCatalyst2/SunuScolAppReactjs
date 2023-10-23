@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash, faChildren } from '@fortawesome/free-solid-svg-icons';
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -59,7 +59,12 @@ function UsersList() {
                                                 <td>{user.userName}</td>
                                                 <td>{user.email}</td>
                                                 <td>
-                                                    <button onClick={() => { navigate(`/user_roles/${user.id}`) }} className="btn btn-success rounded-pill">
+                                                <button style={{ marginRight: "10px" }}
+                                                    onClick={() => { navigate(`/studentsuserlist/${user.userId}`) }}
+                                                    className="btn btn-dark rounded-pill">
+                                                    Mes enfants <FontAwesomeIcon icon={faChildren} />
+                                                </button>
+                                                    <button onClick={() => { navigate(`/user/${user.userId}`) }} className="btn btn-success rounded-pill">
                                                         <FontAwesomeIcon icon={faEdit} />
                                                     </button>
                                                     <button style={{ marginLeft: "10px" }} onClick={() => { deleteUser(user.userId, user.userName) }} className="btn btn-danger rounded-pill">

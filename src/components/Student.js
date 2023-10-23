@@ -31,7 +31,7 @@ function Student() {
     return (
         <>
             <div>
-                <h1 className='m-3 text-center'>Liste des élèves</h1>
+                <h1 className='m-3 text-center'>Nombre d'élèves de l'établissement : {data.length }</h1>
 
                 <div className='container'>
                     <div className="row">

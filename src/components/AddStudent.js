@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-function AddUserRoles() {
+function AddStudent() {
   const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
@@ -52,14 +52,14 @@ function AddUserRoles() {
   const handleShow = () => setShow(true);
 
   return (
-    <div className='container mt-5'>
+    <div className='container mt-3'>
       <Button  variant="primary" onClick={handleShow}>
-        Ajouter un utilisateur
+        Ajouter un élève
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Ajouter un utilisateur</Modal.Title>
+          <Modal.Title>Ajouter un élève</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -95,4 +95,4 @@ function AddUserRoles() {
   );
 }
 
-export default AddUserRoles;
+export default AddStudent;

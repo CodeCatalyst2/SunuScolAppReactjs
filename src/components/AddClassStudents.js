@@ -8,21 +8,21 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-function AddUser() {
+function AddClassStudents() {
   const navigate = useNavigate();
 
   const [show, setShow] = useState(false);
-  const [userName, setuserName] = useState('');
+  const [classLevel, setclassLevel] = useState('');
   const [email, setEmail] = useState('');
 
   const saveUser = (e) => {
     e.preventDefault();
     
-    let dataJsonUser = { userName: userName, email: email };
+    let dataJsonUser = { classLevel: classLevel, email: email };
     console.log('User => ' + JSON.stringify(dataJsonUser));
 
     // Traiter les données du formulaire ici, par exemple les envoyer à une API
-      const USER_API_BASE_URL = "http://localhost:8080/user/id";
+    const USER_API_BASE_URL = "http://localhost:8080/class_student/id";
     axios.post(USER_API_BASE_URL , dataJsonUser)
       .then(response => {
         console.log(response.data); // Affiche la réponse du backend
@@ -33,7 +33,7 @@ function AddUser() {
       });
 
     // Réinitialiser les champs du formulaire
-    setuserName('');
+    setclassLevel('');
     setEmail('');
     handleClose();
     navigate('/users');
@@ -54,12 +54,12 @@ function AddUser() {
   return (
     <div className='container mt-3'>
       <Button  variant="primary" onClick={handleShow}>
-        Ajouter un utilisateur
+        Ajouter une classe
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Ajouter un utilisateur</Modal.Title>
+          <Modal.Title>Ajouter une classe</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -67,8 +67,8 @@ function AddUser() {
               <Form.Label >Nom</Form.Label>
               <Form.Control
                 type="text"
-                value={userName}
-                onChange={(e) => setuserName(e.target.value)}
+                value={classLevel}
+                onChange={(e) => setclassLevel(e.target.value)}
               />
             </Form.Group>
                       <Form.Group className="mb-3">
@@ -95,4 +95,4 @@ function AddUser() {
   );
 }
 
-export default AddUser;
+export default AddClassStudents;
