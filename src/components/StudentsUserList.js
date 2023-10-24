@@ -68,7 +68,7 @@ function StudentsUserList() {
                         <td>{student.lastName}</td>
                         <td>
                           <button style={{ marginRight: "10px" }}
-                            onClick={() => { navigate(`/studentinfo/${student.studentId}`) }}
+                            onClick={() => { navigate(`/studentinfo/${data.userId}/${student.studentId}`) }}
                             className="btn btn-dark rounded-pill">
                             Fiche élève <FontAwesomeIcon icon={faChild} />
                           </button>

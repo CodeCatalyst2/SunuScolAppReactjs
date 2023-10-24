@@ -8,31 +8,33 @@ import styles from './StudentInfo.module.css'
 function StudentsUserList() {
     const navigate = useNavigate();
 
-    const { id } = useParams();
+    const { idStud, idUser } = useParams();
     const [dataStudent, setDataStudent] = useState([]);
     const [dataUser, setDataUser] = useState([]);
     const [view, setView] = useState('student'); // 'student' ou 'guardian'
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/user/${id}`)
+        axios.get(`http://localhost:8080/student/${idStud}`)
+            .then(response => {
+                setDataStudent(response.data);
+            })
+            .catch(error => {
+                console.error("Il y avait une erreur en récupérant les étudiants:", error);
+            });
+    }, [idStud]);
+    
+    useEffect(() => {
+        axios.get(`http://localhost:8080/user/${idUser}`)
             .then(response => {
                 setDataUser(response.data);
             })
             .catch(error => {
                 console.error("Il y avait une erreur en récupérant du user :", error);
             });
-    }, [id]);
+    }, [idUser]);
 
 
-    useEffect(() => {
-        axios.get(`http://localhost:8080/student/${id}`)
-        .then(response => {
-            setDataStudent(response.data);
-        })
-        .catch(error => {
-            console.error("Il y avait une erreur en récupérant les étudiants:", error);
-        });
-    }, [id]);
+
 
     const handleBackButtonClick = () => {
         navigate(-1); // cela ramène l'utilisateur à la page précédente
@@ -88,13 +90,13 @@ function StudentsUserList() {
                                 <img src={imgStudent} alt="User Icon" width="100" height="100" />
                             </div>
                             <div className={`m-3 ${styles.infoStudDetails}`}>
-                                <p className='m-0'>Identifiant : {dataUser.userId}</p>
-                                <p className='m-0'>Prénom : {dataUser.userName}</p>
+{/*                                 <p className='m-0'>Identifiant : {dataUser.userId}</p>
+ */}                                <p className='m-0'>Prénom : {dataUser.userName}</p>
                                 <p className='m-0'>Nom : xxx</p>
                                 <p className='m-0'>Téléphone : xxxx</p>
                                 <p className='m-0'>Profession : xxxx</p>
-                                <p className='m-0'>Adresse : xxxx</p>
-                                <p className='m-0'>Email : xxxx</p>
+                                <p className='m-0'>Adresse : xxx</p>
+                                <p className='m-0'>Email :  {dataUser.email}</p>
                             </div>
                         </div>
                     )}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {faEdit, faInfoCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -55,6 +55,11 @@ function StudentsList() {
                                                 <td>{student.firstName}</td>
                                                 <td>{student.lastName}</td>
                                                 <td>
+                                                    <button style={{ marginRight: "10px" }}
+                                                        onClick={() => { navigate(`/studentinfo/${student.userId}/${student.studentId}`) }}
+                                                        className="btn btn-dark rounded-pill">
+                                                        <FontAwesomeIcon icon={faInfoCircle} />
+                                                    </button>
                                                     <button onClick={() => { navigate(`/student_roles/${student.id}`) }} className="btn btn-success">
                                                         <FontAwesomeIcon icon={faEdit} />
                                                     </button>

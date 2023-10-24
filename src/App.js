@@ -26,7 +26,7 @@ function App() {
         <Route path="/roles" element={<RolesList />} />
         <Route path="/adduser" element={<AddUser />} />
         <Route path="/addstudent" element={<AddStudent />} />
-        <Route path="/studentinfo/:id" element={<StudentInfo />} />
+        <Route path="/studentinfo/:idUser/:idStud" element={<StudentInfo />} />
         <Route path="/students" element={<StudentsList />} />
         <Route path="/studentsuserlist/:id" element={<StudentsUserList />} />
         <Route path="/studentsclasslist/:id" element={<StudentsClassList />} />
