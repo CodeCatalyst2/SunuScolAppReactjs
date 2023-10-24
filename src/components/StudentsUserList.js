@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { faChild, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 function StudentsUserList() {
 
   const navigate = useNavigate();
+
+  const handleBackButtonClick = () => {
+    navigate(-1); // cela ramène l'utilisateur à la page précédente
+  };
+  
   const { id } = useParams();
 
 
@@ -35,6 +42,9 @@ function StudentsUserList() {
   return (
     <>
       <div>
+        <button onClick={handleBackButtonClick} className="btn btn-secondary m-3">
+          Retour
+        </button>
         <h1 className='m-3 text-center'>M. {data.userName }</h1>
 
         <div className='container'>
@@ -57,14 +67,23 @@ function StudentsUserList() {
                         <td>{student.firstName}</td>
                         <td>{student.lastName}</td>
                         <td>
-                          <button onClick={() => { navigate(`/student/${student.studentId}`) }} className="btn btn-success">Modifier</button>
-                          <button style={{ marginLeft: "10px" }} onClick={() => { deleteStudent(student.studentId, student.lastName) }} className="btn btn-danger">Supprimer</button>
+                          <button style={{ marginRight: "10px" }}
+                            onClick={() => { navigate(`/studentinfo/${student.studentId}`) }}
+                            className="btn btn-dark rounded-pill">
+                            Fiche élève <FontAwesomeIcon icon={faChild} />
+                          </button>
+                          <button onClick={() => { navigate(`/student/${student.studentId}`) }} className="btn btn-success">
+                            <FontAwesomeIcon icon={faEdit} />
+                          </button>
+                          <button style={{ marginLeft: "10px" }} onClick={() => { deleteStudent(student.studentId, student.lastName) }} className="btn btn-danger">
+                            <FontAwesomeIcon icon={faTrash} />
+                          </button>
                         </td>
                       </tr>
                     ))
                   ) : (
                     <tr>
-                      <td colSpan="4" className="text-center">Pas d'élève</td>
+                      <td colSpan="4" className="text-center">Pas d'enfant inscrit</td>
                     </tr>
                   )
                 }

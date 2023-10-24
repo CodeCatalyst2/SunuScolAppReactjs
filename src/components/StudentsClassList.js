@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import AddClassStudents from './AddClassStudents';
 import AddStudent from './AddStudent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChild, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 function StudentsUserList() {
 
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const handleBackButtonClick = () => {
+    navigate(-1); // cela ramène l'utilisateur à la page précédente
+  };
 
 
   const [data, setData] = useState([]);
@@ -37,6 +42,9 @@ function StudentsUserList() {
   return (
     <>
       <div>
+        <button onClick={handleBackButtonClick} className="btn btn-secondary m-3">
+          Retour
+        </button>
         <AddStudent/>
         <h1 className='m-3 text-center'>{data.classLevel }</h1>
 
@@ -60,8 +68,17 @@ function StudentsUserList() {
                         <td>{student.firstName}</td>
                         <td>{student.lastName}</td>
                         <td>
-                          <button onClick={() => { navigate(`/student/${student.studentId}`) }} className="btn btn-success">Modifier</button>
-                          <button style={{ marginLeft: "10px" }} onClick={() => { deleteStudent(student.studentId, student.lastName) }} className="btn btn-danger">Supprimer</button>
+                          <button style={{ marginRight: "10px" }}
+                            onClick={() => { navigate(`/studentinfo/${student.studentId}`) }}
+                            className="btn btn-dark rounded-pill">
+                            Fiche élève <FontAwesomeIcon icon={faChild} />
+                          </button>
+                          <button onClick={() => { navigate(`/student/${student.studentId}`) }} className="btn btn-success">
+                            <FontAwesomeIcon icon={faEdit} />
+                          </button>
+                          <button style={{ marginLeft: "10px" }} onClick={() => { deleteStudent(student.studentId, student.lastName) }} className="btn btn-danger">
+                            <FontAwesomeIcon icon={faTrash} />
+                          </button>
                         </td>
                       </tr>
                     ))

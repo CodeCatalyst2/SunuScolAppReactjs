@@ -59,11 +59,11 @@ function UsersList() {
                                                 <td>{user.userName}</td>
                                                 <td>{user.email}</td>
                                                 <td>
-                                                <button style={{ marginRight: "10px" }}
-                                                    onClick={() => { navigate(`/studentsuserlist/${user.userId}`) }}
-                                                    className="btn btn-dark rounded-pill">
-                                                    Mes enfants <FontAwesomeIcon icon={faChildren} />
-                                                </button>
+                                                    <button style={{ marginRight: "10px" }}
+                                                        onClick={() => { navigate(`/studentsuserlist/${user.userId}`) }}
+                                                        className="btn btn-dark rounded-pill">
+                                                        Mes enfants <FontAwesomeIcon icon={faChildren} />
+                                                    </button>
                                                     <button onClick={() => { navigate(`/user/${user.userId}`) }} className="btn btn-success rounded-pill">
                                                         <FontAwesomeIcon icon={faEdit} />
                                                     </button>

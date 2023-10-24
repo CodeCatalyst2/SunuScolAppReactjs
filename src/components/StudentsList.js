@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-function Student() {
+function StudentsList() {
 
     const navigate = useNavigate();
 
@@ -24,7 +26,7 @@ function Student() {
         if (conf) {
             const STUDENT_API_BASE_URL = "http://localhost:8080/student/";
             axios.delete(STUDENT_API_BASE_URL + studentId);
-            // window.location.reload();
+            window.location.reload();
         }
     };
 
@@ -53,8 +55,12 @@ function Student() {
                                                 <td>{student.firstName}</td>
                                                 <td>{student.lastName}</td>
                                                 <td>
-                                                    <button onClick={() => { navigate(`/student_roles/${student.id}`) }} className="btn btn-success">Modifier </button>
-                                                    <button style={{ marginLeft: "10px" }} onClick={() => { deleteStudent(student.studentId, student.lastName) }} className="btn btn-danger">Supprimer </button>
+                                                    <button onClick={() => { navigate(`/student_roles/${student.id}`) }} className="btn btn-success">
+                                                        <FontAwesomeIcon icon={faEdit} />
+                                                    </button>
+                                                    <button style={{ marginLeft: "10px" }} onClick={() => { deleteStudent(student.studentId, student.lastName) }} className="btn btn-danger">
+                                                        <FontAwesomeIcon icon={faTrash} />
+                                                    </button>
                                                 </td>
                                             </tr>
                                     )
@@ -68,4 +74,4 @@ function Student() {
     );
 };
 
-export default Student;
+export default StudentsList;

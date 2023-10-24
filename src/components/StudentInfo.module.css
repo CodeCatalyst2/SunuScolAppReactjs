@@ -1,0 +1,51 @@
+.containerCenter {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.containerStudent{
+    /* background-color: red; */
+    width: 1000px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.infoStudent{
+        display: flex;
+            /* justify-content: center; */
+            padding-top: 5px;
+
+}
+
+.infoStudDetails {
+    text-align: left;
+
+
+}
+
+
+
+.titleUser{
+    background-color: lightgrey;
+    
+}
+
+
+@media (max-width: 800px) {
+    /* Appliquer ces styles lorsque la largeur de l'écran est inférieure ou égale à 800px */
+
+    .infoStudent {
+        flex-direction: column;
+        /* Mettre les enfants en colonne */
+        align-items: center;
+        /* Centrer les enfants horizontalement */
+        text-align: center;
+        /* Centrer le texte horizontalement */
+    }
+
+    .infoStudDetails {
+        margin-top: 10px;
+        /* Ajouter un espace entre l'image et le texte */
+    }
+}
+

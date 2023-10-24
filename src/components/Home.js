@@ -3,7 +3,7 @@ import UsersList from './UsersList'
 
 const Home = () => {
   return (
-      <div>
+      <div className='container'>
       <h1>Accueil</h1>
       <UsersList/>
       </div>

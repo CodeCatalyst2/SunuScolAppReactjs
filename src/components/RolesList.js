@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
-function Role() {
+function RolesList() {
 
   const navigate = useNavigate();
 
@@ -53,8 +55,12 @@ function Role() {
                         <td>{role.roleName}</td>
                         <td>{role.permissions}</td>
                         <td>
-                          <button onClick={() => { navigate(`/role_roles/${role.id}`) }} className="btn btn-success">Modifier </button>
-                          <button style={{ marginLeft: "10px" }} onClick={() => { deleterole(role.roleId, role.roleName) }} className="btn btn-danger">Supprimer </button>
+                          <button onClick={() => { navigate(`/role_roles/${role.id}`) }} className="btn btn-success">
+                            <FontAwesomeIcon icon={faEdit} />
+                          </button>
+                          <button style={{ marginLeft: "10px" }} onClick={() => { deleterole(role.roleId, role.roleName) }} className="btn btn-danger">
+                            <FontAwesomeIcon icon={faTrash} />
+                          </button>
                         </td>
                       </tr>
                   )
@@ -68,4 +74,4 @@ function Role() {
   );
 };
 
-export default Role;
+export default RolesList;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash, faUsers } from '@fortawesome/free-solid-svg-icons';
 import AddClassStudents from './AddClassStudents';
 
 
@@ -27,7 +27,7 @@ function ClassStudent() {
         if (conf) {
             const classStudents_API_BASE_URL = "http://localhost:8080/class_student/";
             axios.delete(classStudents_API_BASE_URL + classStudentsId);
-            // window.location.reload();
+            window.location.reload();
         }
     };
 
@@ -60,8 +60,12 @@ function ClassStudent() {
                                                         className="btn btn-dark rounded-pill">
                                                         Liste des élèves <FontAwesomeIcon icon={faUsers} />
                                                     </button>
-                                                    <button onClick={() => { navigate(`/classStudents_roles/${classStudents.id}`) }} className="btn btn-success">Modifier </button>
-                                                    <button style={{ marginLeft: "10px" }} onClick={() => { deleteclassStudents(classStudents.classId, classStudents.classLevel) }} className="btn btn-danger">Supprimer </button>
+                                                    <button onClick={() => { navigate(`/classStudents_roles/${classStudents.id}`) }} className="btn btn-success">
+                                                        <FontAwesomeIcon icon={faEdit} />
+                                                    </button>
+                                                    <button style={{ marginLeft: "10px" }} onClick={() => { deleteclassStudents(classStudents.classId, classStudents.classLevel) }} className="btn btn-danger">
+                                                        <FontAwesomeIcon icon={faTrash} />
+                                                    </button>
                                                 </td>
                                             </tr>
                                     )
