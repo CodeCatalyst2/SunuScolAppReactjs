@@ -4,48 +4,58 @@
     padding-top: 50px;
 }
 
-.containerStudent{
-    /* background-color: red; */
+.containerStudent {
     width: 1000px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.infoStudent{
-        display: flex;
-            /* justify-content: center; */
-            padding-top: 5px;
-
+.infoStudent {
+    display: flex;
+    padding-top: 5px;
 }
 
 .infoStudDetails {
     text-align: left;
-
-
 }
 
-
-
-.titleUser{
+.titleUser {
     background-color: lightgrey;
-    
 }
 
+
+.identityBtn {
+    margin-bottom: 3px;
+    width: 180px;
+    padding: 10px 20px;
+    border: none;
+    color: white;
+}
+
+.identityBtnStudent {
+    background-color: grey;
+    border: 3px solid black;
+    font-size: 15px;
+}
+
+.identityBtnResponsible {
+    background-color: #2d3436;
+}
 
 @media (max-width: 800px) {
-    /* Appliquer ces styles lorsque la largeur de l'écran est inférieure ou égale à 800px */
+    .containerCenter {
+        padding-top: 0px;
+    }
+
+    .containerStudent {
+        text-align: center;
+    }
+
+    .identityBtn {
+        margin-bottom: 3px;
+        width: 180px;
+    }
 
     .infoStudent {
         flex-direction: column;
-        /* Mettre les enfants en colonne */
-        align-items: center;
-        /* Centrer les enfants horizontalement */
-        text-align: center;
-        /* Centrer le texte horizontalement */
-    }
-
-    .infoStudDetails {
-        margin-top: 10px;
-        /* Ajouter un espace entre l'image et le texte */
     }
 }
-

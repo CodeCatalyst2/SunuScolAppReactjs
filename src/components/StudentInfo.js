@@ -11,7 +11,8 @@ function StudentsUserList() {
     const { idStud, idUser } = useParams();
     const [dataStudent, setDataStudent] = useState([]);
     const [dataUser, setDataUser] = useState([]);
-    const [view, setView] = useState('student'); // 'student' ou 'guardian'
+    const [view, setView] = useState('student');
+
 
     useEffect(() => {
         axios.get(`http://localhost:8080/student/${idStud}`)
@@ -19,7 +20,7 @@ function StudentsUserList() {
                 setDataStudent(response.data);
             })
             .catch(error => {
-                console.error("Il y avait une erreur en récupérant les étudiants:", error);
+                console.error("Il y avait une erreur en récupérant l'étudiant :", error);
             });
     }, [idStud]);
     
@@ -29,7 +30,7 @@ function StudentsUserList() {
                 setDataUser(response.data);
             })
             .catch(error => {
-                console.error("Il y avait une erreur en récupérant du user :", error);
+                console.error("Il y avait une erreur en récupérant de l'utilisateur :", error);
             });
     }, [idUser]);
 
@@ -40,8 +41,6 @@ function StudentsUserList() {
         navigate(-1); // cela ramène l'utilisateur à la page précédente
     };
 
-    // console.log("dataUser : " + JSON.stringify(dataUser))
-    // console.log("dataStudent : " + JSON.stringify(dataStudent))
 
     return (
         <>
@@ -55,17 +54,20 @@ function StudentsUserList() {
                         <h4>Fiche de renseignements : {dataStudent.firstName} {dataStudent.lastName}</h4>
                     </div>
                     <div className='mt-1'>
-                        <button className='btn btn-secondary rounded-0 me-1'
+                        <button
+                            className={`rounded-0 me-1 ${styles.identityBtn} ${view === 'student' ? styles.identityBtnStudent : styles.identityBtnResponsible}`}
                             onClick={() => setView('student')}
                         >
                             Identité & Scolarité
                         </button>
+
                         <button
-                            className='btn btn-secondary rounded-0 '
-                            onClick={() => setView('guardian')}
+                            className={`rounded-0 ${styles.identityBtn} ${view === 'responsible' ? styles.identityBtnStudent : styles.identityBtnResponsible}`}
+                            onClick={() => setView('responsible')}
                         >
                             Responsables
                         </button>
+
                     </div>
                     <hr className='m-0' />
                     {view === 'student' ? (
@@ -90,8 +92,8 @@ function StudentsUserList() {
                                 <img src={imgStudent} alt="User Icon" width="100" height="100" />
                             </div>
                             <div className={`m-3 ${styles.infoStudDetails}`}>
-{/*                                 <p className='m-0'>Identifiant : {dataUser.userId}</p>
- */}                                <p className='m-0'>Prénom : {dataUser.userName}</p>
+                                <p className='m-0'>Identifiant : {dataUser.userId}</p>
+                                <p className='m-0'>Prénom : {dataUser.userName}</p>
                                 <p className='m-0'>Nom : xxx</p>
                                 <p className='m-0'>Téléphone : xxxx</p>
                                 <p className='m-0'>Profession : xxxx</p>
